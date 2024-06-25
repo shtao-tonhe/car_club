@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🚗🚗</title>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <div class="page">
+      <div class="top-nav">
+        <div class="top-main">
+          <div class="logo">
+            <img src="./statis/img/car.png" alt="">
+            <div class="logo-text">
+              <div class="title">懂个车</div>
+              <div class="desc">看车·买车·用车</div>
+            </div>
+          </div>
+          <div class="sea-box" :class="{ 'sea-box-active': isInputFocused }">
+            <input type="text" @focus="isInputFocused = true" @blur="isInputFocused = false" placeholder="🔥🔥小米su7">
+            <div class="icon">
+              <img src="./statis/img/sea.png" alt="">
+            </div>
+          </div>
+          <div class="user" v-if="!authToken" @click="authToken='dqwfqgadfsdd8129128hd18h28d9128'">
+            <div class="login">去登录</div>
+          </div>
+          <div class="user" v-else @click="authToken=null">
+            <div class="photo">
+              <img src="./statis/img/photo.png" alt="">
+            </div>
+            <span>一只帆船92uYs</span>
+          </div>
+        </div>
+      </div>
+      <div class="page-main">
+        <div class="data-list">
+          <div class="type-list">
+            <div class="type-item">
+              <img src="./statis/img/photo.png" alt="">
+              <img src="./statis/img/photo.png" alt="">
+              <img src="./statis/img/photo.png" alt="">
+              <img src="./statis/img/photo.png" alt="">
+              <img src="./statis/img/photo.png" alt="">
+              <img src="" alt="">
+              <span>新能源</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
+
+<script>
+  const app = Vue.createApp({
+    data() {
+      return {
+        isInputFocused: false,
+        authToken: null,
+      };
+    },
+  });
+
+  app.mount('#app');
+</script>
+
+<style lang="scss" scoped>
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  .page {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .top-nav {
+    width: 100%;
+    padding: 15px 0 18px 0;
+    background: rgba(252, 252, 252, 1);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 99;
+    display: flex;
+    align-items: center;
+    backdrop-filter: saturate(180%) blur(15px);
+    background: rgba(241, 241, 250, 0.85);
+    box-shadow: 0 -5px 15px #999999;
+
+    .top-main {
+      width: 100%;
+      margin: 0 210px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+
+      .logo {
+        padding: 8px 20px;
+        border-radius: 10px;
+        /* background: pink; */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: -1px -1px 11px #ffffff, 1px 1px 2.2px #999999, 2px 2px 2.2px #999999;
+        background-image: linear-gradient(135deg, rgba(226, 209, 195, .7) 0%, #B5B4AF 100%);
+
+        img {
+          width: 35px;
+          height: 35px;
+          -webkit-filter: drop-shadow(2px 2px 6px rgba(0, 0, 0, .5));
+          filter: drop-shadow(2px 2px 6px rgba(0, 0, 0, .5));
+        }
+
+        .logo-text {
+          margin-left: 10px;
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+
+          .title {
+            font-size: 17px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            margin-bottom: 2px;
+          }
+
+          .desc {
+            letter-spacing: 1px;
+            font-size: 12px;
+            font-weight: 400;
+          }
+        }
+      }
+
+      .sea-box {
+        width: 380px;
+        height: 44px;
+        background: #fff;
+        border-radius: 100px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0px 15px;
+        transition: .3s;
+        box-shadow: 0 0 5px rgba(241, 241, 250, 0);
+
+        input {
+          flex: 1;
+          margin: 0;
+          padding: 0;
+          margin: 0 5px;
+          height: 100%;
+          border: unset;
+          letter-spacing: 2px;
+          outline: none;
+        }
+
+
+        .icon {
+          cursor: pointer;
+          border-radius: 100%;
+          padding: 10px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: .3s;
+
+          img {
+            width: 16px;
+            height: 16px;
+          }
+        }
+
+        .icon:hover {
+          background: rgba(241, 241, 250, 1);
+        }
+      }
+
+      .sea-box-active {
+        transition: .3s;
+        box-shadow: 0 0 5px #B9B8B2;
+        border-radius: 10px;
+      }
+
+      .login {
+        cursor: pointer;
+        border-radius: 10px;
+        padding: 10px 25px;
+        background-image: linear-gradient(135deg, rgba(226, 209, 195, .7) 0%, #B5B4AF 100%);
+        font-size: 14px;
+        letter-spacing: 2px;
+        color: rgba(0, 0, 0, .8);
+        transition: .3s;
+      }
+
+      .login:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 1px 10px rgba(0, 0, 0, .12);
+      }
+
+      .user {
+        min-width: 165px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-end;
+
+        .photo {
+          cursor: pointer;
+          width: 45px;
+          height: 45px;
+          overflow: hidden;
+          margin-right: 8px;
+          border-radius: 100%;
+          background: #E3E3E3;
+          box-shadow: inset 0 0 3px #fff;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.082);
+          border: 1px solid rgba(0, 0, 0, .04);
+
+          img {
+            width: 100%;
+            height: 100%;
+          }
+        }
+      }
+    }
+  }
+
+  .left-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 230px;
+    z-index: 2;
+    background: blueviolet;
+
+    .menu-main {
+      margin: 108px 20px 0 20px;
+      background: pink;
+    }
+  }
+
+  .page-main {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    /* background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%); */
+
+    .data-list {
+      flex: 1;
+      height: 1000px;
+      background: pink;
+      margin: 20px 230px;
+
+      .type-list {
+        margin-top: 80px;
+        width: 100%;
+        height: 300px;
+        background: orange;
+      }
+    }
+  }
+</style>
